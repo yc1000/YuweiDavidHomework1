@@ -1,0 +1,19 @@
+(homepage)
+header
+login
+post(require login check)
+blog(title, date, user, content)(only 3-5)
+external style sheet/external tool (to change style)
+subscribe/unsubscribe
+
+(list of all post page)
+the same as landing page with all posts
+
+(post page)
+two textbooks for title & content
+submit(redirect to homepage with post there)
+same style as homepage
+
+cron job
+update of posts every 24 hrs via email
+subscribe/unsubscribe
