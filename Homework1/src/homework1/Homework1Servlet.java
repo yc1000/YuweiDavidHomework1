@@ -1,4 +1,4 @@
-package guestbook;
+package homework1;
 
 import java.io.IOException;
 import javax.servlet.http.*;
@@ -7,7 +7,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 @SuppressWarnings("serial")
-public class GuestbookServlet extends HttpServlet {
+public class Homework1Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
@@ -15,10 +15,11 @@ public class GuestbookServlet extends HttpServlet {
 		
 		if (user != null){
 			resp.setContentType("text/plain");
-			resp.getWriter().println("Hello, " + user.getNickname());
+			resp.getWriter().println("Hello, world");
 		}else{
 			resp.sendRedirect(userService.createLoginURL(req.getRequestURL().toString()));
 		}
+			
 		
 	}
 }
