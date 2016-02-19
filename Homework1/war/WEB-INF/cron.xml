@@ -2,7 +2,8 @@
 <cronentries>
 <cron>
 <url>/cronjob</url>
-<description>Mail out a weekly report</description>
-<schedule>every 30 minutes from 00:00 to 20:00</schedule>
+<description>Daily Update</description>
+<schedule>every day 17:00</schedule>
+<timezone>America/Chicago</timezone>
 </cron>
 </cronentries>
