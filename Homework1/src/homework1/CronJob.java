@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.users.User;
+
 @SuppressWarnings("serial")
 public class CronJob extends HttpServlet{
 	int hello = 0;
-
+	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)  throws IOException {
 		Properties props = new Properties();
@@ -59,7 +61,10 @@ public class CronJob extends HttpServlet{
 
         try {
             Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress("anything@yuwei-testing.appspotmail.com", "Admin"));
+            msg.setFrom(new InternetAddress("dailynews@yuwei-testing.appspotmail.com", "Admin"));
+            for(User u: UserSubList.userList) {
+            	msg.addRecipient(Message.RecipientType.TO, new InternetAddress(u.toString(), "Valued User"));
+            }
             msg.addRecipient(Message.RecipientType.TO,
                              new InternetAddress("yc1000@gmail.com", "Mr. User"));
             msg.setSubject("Boop");
