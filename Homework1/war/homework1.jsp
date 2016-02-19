@@ -84,23 +84,12 @@ to make a post.</p>
 			pageContext.setAttribute("post_title",greeting.getProperty("title"));
 			pageContext.setAttribute("post_content",greeting.getProperty("content"));
 			pageContext.setAttribute("post_date",greeting.getProperty("date"));
-			if (greeting.getProperty("user") == null) {
-                %>
-
-                <p>An anonymous person wrote:</p>
-
-                <%
-			} else {
-				pageContext.setAttribute("greeting_user",greeting.getProperty("user"));
+			pageContext.setAttribute("greeting_user",greeting.getProperty("user"));
                 %>
 				<p style="font-family:Arial;color:green;font-size:30px">${fn:escapeXml(post_title)}</p>
-                <p>by <b>${fn:escapeXml(greeting.user.nickname)}</b> on
+                <p>by <b>${fn:escapeXml(greeting_user)}</b> on
                 <b>${fn:escapeXml(post_date)}</b></p>
-
-                <%
-			}
-            %>
-			<blockquote>${fn:escapeXml(post_content)}</blockquote>
+				<blockquote>${fn:escapeXml(post_content)}</blockquote>
             <%
         }
     }

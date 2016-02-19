@@ -60,7 +60,7 @@ to make a post.</p>
 	Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
 
 	Query query = new Query("Greeting", guestbookKey).addSort("date", Query.SortDirection.DESCENDING);
-	List<Entity> greetings = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
+	List<Entity> greetings = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(1000));
 
 	if (greetings.isEmpty()) {
         %>
@@ -78,27 +78,19 @@ to make a post.</p>
 			pageContext.setAttribute("post_title",greeting.getProperty("title"));
 			pageContext.setAttribute("post_content",greeting.getProperty("content"));
 			pageContext.setAttribute("post_date",greeting.getProperty("date"));
-			if (greeting.getProperty("user") == null) {
-                %>
-
-                <p>An anonymous person wrote:</p>
-
-                <%
-			} else {
-				pageContext.setAttribute("greeting_user",greeting.getProperty("user"));
+			pageContext.setAttribute("greeting_user",greeting.getProperty("user"));
                 %>
 
                 <p><b>${fn:escapeXml(greeting_user.nickname)}</b> wrote on 
                 <b>${fn:escapeXml(post_date)}</b>:</p>
-
+				
+				<p style="font-family:Arial;color:green;font-size:30px"><b>${fn:escapeXml(post_title)}</b></p>
+            	<p>${fn:escapeXml(post_content)}</p>
+            	
                 <%
-			}
-            %>
-			<blockquote>${fn:escapeXml(post_title)}</blockquote>
-            <blockquote>${fn:escapeXml(post_content)}</blockquote>
-            <%
+		
         }
-    }
+	}
 %>
 
 
