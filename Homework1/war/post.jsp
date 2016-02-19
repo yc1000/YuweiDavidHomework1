@@ -15,7 +15,7 @@
 <html>
 
 	<head>
-		<title>Homepage of our blog</title>
+		<title>Post Writing Page</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
@@ -39,13 +39,15 @@
 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
 
-<p>Create a post <a href="post.jsp">here</a>!</p>
+<p>return to <a href="homework1.jsp">homepage</a></p>
+
+<p>What do you want to say today?</p>
 
 <%
 	} else {
 %>
 
-<p>Hello!
+<p>Sorry, anonymous users can't make a post :(
 <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
 to make a post.</p>
 
@@ -53,52 +55,13 @@ to make a post.</p>
 	}
 %>
 
-<%
-	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-	Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
 
-	Query query = new Query("Greeting", guestbookKey).addSort("date", Query.SortDirection.DESCENDING);
-	List<Entity> greetings = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(3));
-
-	if (greetings.isEmpty()) {
-        %>
-
-        <p>Guestbook '${fn:escapeXml(guestbookName)}' has no messages.</p>
-
-        <%
-	} else {
-        %>
-
-		<p>Messages in Guestbook '${fn:escapeXml(guestbookName)}'.</p>
-		<p>View all blogs <a href="fullBlog.jsp">here</a>.</p>
-
-        <%
-		for (Entity greeting : greetings) {
-			pageContext.setAttribute("post_title",greeting.getProperty("title"));
-			pageContext.setAttribute("post_content",greeting.getProperty("content"));
-			pageContext.setAttribute("post_date",greeting.getProperty("date"));
-			if (greeting.getProperty("user") == null) {
-                %>
-
-                <p>An anonymous person wrote:</p>
-
-                <%
-			} else {
-				pageContext.setAttribute("greeting_user",greeting.getProperty("user"));
-                %>
-				<p style="font-family:Arial;color:green;font-size:30px">${fn:escapeXml(post_title)}</p>
-                <p>by <b>${fn:escapeXml(greeting.user.nickname)}</b> 
-                <b>${fn:escapeXml(post_date)}</b></p>
-
-                <%
-			}
-            %>
-			<blockquote>${fn:escapeXml(post_content)}</blockquote>
-            <%
-        }
-    }
-%>
-
+	<form action="/post" method="post">
+		<div><textarea name="title" rows="1" cols="60"></textarea></div>
+		<div><textarea name="content" rows="5" cols="60"></textarea></div>
+		<div><input type="submit" value="Post" /></div>
+		<input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
+	</form>
 
 	</body>
 </html>

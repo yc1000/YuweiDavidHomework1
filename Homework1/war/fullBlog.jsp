@@ -15,7 +15,7 @@
 <html>
 
 	<head>
-		<title>Homepage of our blog</title>
+		<title>Blog list</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
@@ -53,12 +53,14 @@ to make a post.</p>
 	}
 %>
 
+<p>return to <a href="homework1.jsp">homepage</a></p>
+
 <%
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
 
 	Query query = new Query("Greeting", guestbookKey).addSort("date", Query.SortDirection.DESCENDING);
-	List<Entity> greetings = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(3));
+	List<Entity> greetings = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
 
 	if (greetings.isEmpty()) {
         %>
@@ -70,8 +72,7 @@ to make a post.</p>
         %>
 
 		<p>Messages in Guestbook '${fn:escapeXml(guestbookName)}'.</p>
-		<p>View all blogs <a href="fullBlog.jsp">here</a>.</p>
-
+		
         <%
 		for (Entity greeting : greetings) {
 			pageContext.setAttribute("post_title",greeting.getProperty("title"));
@@ -86,14 +87,15 @@ to make a post.</p>
 			} else {
 				pageContext.setAttribute("greeting_user",greeting.getProperty("user"));
                 %>
-				<p style="font-family:Arial;color:green;font-size:30px">${fn:escapeXml(post_title)}</p>
-                <p>by <b>${fn:escapeXml(greeting.user.nickname)}</b> 
-                <b>${fn:escapeXml(post_date)}</b></p>
+
+                <p><b>${fn:escapeXml(greeting_user.nickname)}</b> wrote on 
+                <b>${fn:escapeXml(post_date)}</b>:</p>
 
                 <%
 			}
             %>
-			<blockquote>${fn:escapeXml(post_content)}</blockquote>
+			<blockquote>${fn:escapeXml(post_title)}</blockquote>
+            <blockquote>${fn:escapeXml(post_content)}</blockquote>
             <%
         }
     }
