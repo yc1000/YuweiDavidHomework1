@@ -87,7 +87,7 @@ to make a post.</p>
 				pageContext.setAttribute("greeting_user",greeting.getProperty("user"));
                 %>
 				<p style="font-family:Arial;color:green;font-size:30px">${fn:escapeXml(post_title)}</p>
-                <p>by <b>${fn:escapeXml(greeting.user.nickname)}</b> 
+                <p>by <b>${fn:escapeXml(greeting.user.nickname)}</b> on
                 <b>${fn:escapeXml(post_date)}</b></p>
 
                 <%
