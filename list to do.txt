@@ -1,6 +1,6 @@
 (homepage)
-header
-login
+header(check)
+login(check)
 post(require login check)
 blog(title, date, user, content)(only 3-5)
 external style sheet/external tool (to change style)
