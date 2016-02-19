@@ -79,12 +79,12 @@ to make a post.</p>
 			pageContext.setAttribute("post_content",greeting.getProperty("content"));
 			pageContext.setAttribute("post_date",greeting.getProperty("date"));
 			pageContext.setAttribute("greeting_user",greeting.getProperty("user"));
-                %>
+                %>  
 
                 <p><b>${fn:escapeXml(greeting_user.nickname)}</b> wrote on 
                 <b>${fn:escapeXml(post_date)}</b>:</p>
 				
-				<p style="font-family:Arial;color:green;font-size:30px"><b>${fn:escapeXml(post_title)}</b></p>
+				<p style="font-family:Arial;color:green;font-size:30px"><a href="singleBlog.jsp?title= + ${fn:escapeXml(post_title)"><b>${fn:escapeXml(post_title)}</b></p>
             	<p>${fn:escapeXml(post_content)}</p>
             	
                 <%

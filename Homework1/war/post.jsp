@@ -36,8 +36,7 @@
 %>
 
 
-<p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
+<p>Hello, ${fn:escapeXml(user.nickname)}! </p>
 
 <p>return to <a href="homework1.jsp">homepage</a></p>
 
