@@ -21,15 +21,16 @@ import com.google.appengine.api.users.User;
 public class CronJob extends HttpServlet{
 	int hello = 0;
 	
-	@Override
+	/*@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)  throws IOException {
 		Properties props = new Properties();
 		hello++;
 		
         Session session = Session.getDefaultInstance(props, null);
 
-        String msgBody = "...";
-
+        String msgBody = UserSubList.CronMessage;
+        UserSubList.clearMessage();
+        
         try {
             Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress("admin@example.com", "Example.com Admin"));
@@ -47,7 +48,7 @@ public class CronJob extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
-
+*/
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)  throws IOException {
 		Properties props = new Properties();
@@ -57,8 +58,9 @@ public class CronJob extends HttpServlet{
 		
         Session session = Session.getDefaultInstance(props, null);
 
-        String msgBody = "...";
-
+        String msgBody = UserSubList.CronMessage;
+        UserSubList.clearMessage();
+        
         try {
             Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress("dailynews@yuwei-testing.appspotmail.com", "Admin"));
@@ -67,7 +69,7 @@ public class CronJob extends HttpServlet{
             }
             msg.addRecipient(Message.RecipientType.TO,
                              new InternetAddress("yc1000@gmail.com", "Mr. User"));
-            msg.setSubject("Boop");
+            msg.setSubject("Daily Update");
             msg.setText(msgBody);
             Transport.send(msg);
 
