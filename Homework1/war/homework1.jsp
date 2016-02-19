@@ -10,6 +10,8 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="homework1.UserSubscriptionList" %>
+<%@ page import="homework1.UserSubList" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
@@ -31,6 +33,10 @@
 	pageContext.setAttribute("guestbookName", guestbookName);
 	UserService userService = UserServiceFactory.getUserService();
 	User user = userService.getCurrentUser();
+	UserSubscriptionList ul = new UserSubscriptionList();
+	ul.ulist.setUser(user);
+	System.out.println(user);
+	
 	if (user != null) {
 		pageContext.setAttribute("user", user);
 %>

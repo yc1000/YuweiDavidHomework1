@@ -73,8 +73,8 @@ to make a post.</p>
 
 		<p>Messages in Guestbook '${fn:escapeXml(guestbookName)}'.</p>
 		
-		<%
-		for (Entity greeting: greetings) {
+        <%
+		for (Entity greeting : greetings) {
 			pageContext.setAttribute("post_title",greeting.getProperty("title"));
 			pageContext.setAttribute("post_content",greeting.getProperty("content"));
 			pageContext.setAttribute("post_date",greeting.getProperty("date"));

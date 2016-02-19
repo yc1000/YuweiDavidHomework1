@@ -16,6 +16,7 @@ import java.util.Date;
 
 @SuppressWarnings("serial")
 public class SignServlet extends HttpServlet {
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
