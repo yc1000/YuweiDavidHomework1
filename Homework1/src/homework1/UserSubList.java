@@ -1,13 +1,25 @@
 package homework1;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.google.appengine.api.users.User;
 
 public class UserSubList{
 	public static ArrayList<User> userList = new ArrayList<User>();
+	public static String CronMessage;
 	User user;
 	public UserSubList() {}
+	
+	public static void addContent(String title, String body, User user, Date date) {
+		CronMessage += "\nOn " + date + " " + user + " posted " + 
+					   "\nTitle:\n" + title + 
+					   "\nMessage\n" + body + "\n";
+	}
+	
+	public static void clearMessage() {
+		CronMessage = "";
+	}
 	
 	public void setUser(User user) {
 		try {

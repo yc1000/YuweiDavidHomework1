@@ -16,6 +16,7 @@ import java.util.Date;
 
 @SuppressWarnings("serial")
 public class Post extends HttpServlet {
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
@@ -30,6 +31,8 @@ public class Post extends HttpServlet {
 		post.setProperty("date", date);
 		post.setProperty("title", title);
 		post.setProperty("content", content);
+		UserSubList.addContent(title, content, user, date);
+		System.out.println(UserSubList.CronMessage);
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(post);
 		resp.sendRedirect("/homework1.jsp?guestbookName=" + guestbookName);
