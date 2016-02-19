@@ -40,6 +40,7 @@
 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
 
 <p>Create a post <a href="post.jsp">here</a>!</p>
+<p><a href="cronJob.jsp">Subscribe/unsubscribe </a></p>
 
 <%
 	} else {
