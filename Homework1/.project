@@ -41,4 +41,11 @@
 		<nature>com.google.appengine.eclipse.core.gaeNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>appcfg5676232524579932240.tmp</name>
+			<type>2</type>
+			<location>C:/Users/Yuwei/AppData/Local/Temp/appcfg5676232524579932240.tmp</location>
+		</link>
+	</linkedResources>
 </projectDescription>

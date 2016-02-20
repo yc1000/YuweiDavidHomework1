@@ -32,7 +32,7 @@ public class Post extends HttpServlet {
 		post.setProperty("title", title);
 		post.setProperty("content", content);
 		UserSubList.addContent(title, content, user, date);
-		System.out.println(UserSubList.CronMessage);
+		//System.out.println(UserSubList.CronMessage);
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(post);
 		resp.sendRedirect("/homework1.jsp?guestbookName=" + guestbookName);

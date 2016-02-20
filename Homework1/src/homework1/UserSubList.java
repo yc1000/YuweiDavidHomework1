@@ -14,7 +14,7 @@ public class UserSubList{
 	public static void addContent(String title, String body, User user, Date date) {
 		CronMessage += "\nOn " + date + " " + user + " posted " + 
 					   "\nTitle:\n" + title + 
-					   "\nMessage\n" + body + "\n";
+					   "\nMessage:\n" + body + "\n";
 	}
 	
 	public static void clearMessage() {

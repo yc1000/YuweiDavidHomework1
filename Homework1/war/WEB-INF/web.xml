@@ -23,7 +23,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet-mapping>
 		<servlet-name>cron</servlet-name>
-		<url-pattern>/cronjob</url-pattern>
+		<url-pattern>/cronjob156</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Homework1</servlet-name>

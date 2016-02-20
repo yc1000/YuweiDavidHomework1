@@ -1,21 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
 <%@ page import="homework1.UserSubscriptionList" %>
 <%@ page import="homework1.UserSubList" %>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 
 <html>
 
 	<head>
-		<title>Post Writing Page</title>
+		<title>Subscription Page</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body>
-		<p>
-		<img src="images/header.png" style="width:500px;height:228px;"></p>
-	
+		<p><img src="images/header.png" style="width:500px;height:228px;"></p>
 
 <%
 	UserSubscriptionList hi = new UserSubscriptionList();

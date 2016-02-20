@@ -1,3 +1,7 @@
-/META-INF/
+/WEB-INF/
+/__static__/
+/cronJob.jsp
+/fullBlog.jsp
+/homework1.jsp
+/post.jsp
 /homework1/
-/log4j.properties
